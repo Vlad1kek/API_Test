@@ -1,0 +1,206 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$ref": "#/definitions/Welcome10",
+  "definitions": {
+    "0": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "rel": {
+          "type": "string"
+        },
+        "uri": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "rel",
+        "uri"
+      ],
+      "title": "0"
+    },
+    "Welcome10": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/Data"
+        }
+      },
+      "required": [
+        "data"
+      ],
+      "title": "Welcome10"
+    },
+    "Data": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string",
+          "format": "integer"
+        },
+        "attributes": {
+          "$ref": "#/definitions/Attributes"
+        },
+        "links": {
+          "$ref": "#/definitions/DataLinks"
+        },
+        "relationships": {
+          "$ref": "#/definitions/Relationships"
+        }
+      },
+      "required": [
+        "attributes",
+        "id",
+        "links",
+        "relationships",
+        "type"
+      ],
+      "title": "Data"
+    },
+    "Attributes": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "start": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "end": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "budget_id": {
+          "type": "string",
+          "format": "integer"
+        },
+        "currency_id": {
+          "type": "string",
+          "format": "integer"
+        },
+        "currency_code": {
+          "type": "string"
+        },
+        "currency_name": {
+          "type": "string"
+        },
+        "currency_decimal_places": {
+          "type": "integer"
+        },
+        "currency_symbol": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "string"
+        },
+        "period": {
+          "type": "null"
+        },
+        "spent": {
+          "type": "string",
+          "format": "integer"
+        }
+      },
+      "required": [
+        "amount",
+        "budget_id",
+        "created_at",
+        "currency_code",
+        "currency_decimal_places",
+        "currency_id",
+        "currency_name",
+        "currency_symbol",
+        "end",
+        "period",
+        "spent",
+        "start",
+        "updated_at"
+      ],
+      "title": "Attributes"
+    },
+    "DataLinks": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "0": {
+          "$ref": "#/definitions/0"
+        },
+        "self": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "http"
+          ]
+        }
+      },
+      "required": [
+        "0",
+        "self"
+      ],
+      "title": "DataLinks"
+    },
+    "Relationships": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "budget": {
+          "$ref": "#/definitions/Budget"
+        }
+      },
+      "required": [
+        "budget"
+      ],
+      "title": "Relationships"
+    },
+    "Budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "links": {
+          "$ref": "#/definitions/BudgetLinks"
+        }
+      },
+      "required": [
+        "links"
+      ],
+      "title": "Budget"
+    },
+    "BudgetLinks": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "self": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "http"
+          ]
+        },
+        "related": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "http"
+          ]
+        }
+      },
+      "required": [
+        "related",
+        "self"
+      ],
+      "title": "BudgetLinks"
+    }
+  }
+}

@@ -1,0 +1,222 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$ref": "#/definitions/Welcome8",
+  "definitions": {
+    "0": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "rel": {
+          "type": "string"
+        },
+        "uri": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "rel",
+        "uri"
+      ],
+      "title": "0"
+    },
+    "Welcome8": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/Data"
+        }
+      },
+      "required": [
+        "data"
+      ],
+      "title": "Welcome8"
+    },
+    "Data": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string",
+          "format": "integer"
+        },
+        "attributes": {
+          "$ref": "#/definitions/Attributes"
+        },
+        "links": {
+          "$ref": "#/definitions/Links"
+        }
+      },
+      "required": [
+        "attributes",
+        "id",
+        "links",
+        "type"
+      ],
+      "title": "Data"
+    },
+    "Attributes": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "order": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "account_role": {
+          "type": "string"
+        },
+        "currency_id": {
+          "type": "string",
+          "format": "integer"
+        },
+        "currency_code": {
+          "type": "string"
+        },
+        "currency_symbol": {
+          "type": "string"
+        },
+        "currency_decimal_places": {
+          "type": "integer"
+        },
+        "current_balance": {
+          "type": "string"
+        },
+        "current_balance_date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "monthly_payment_date": {
+          "type": "null"
+        },
+        "credit_card_type": {
+          "type": "null"
+        },
+        "account_number": {
+          "type": "string",
+          "format": "integer"
+        },
+        "iban": {
+          "type": "string"
+        },
+        "bic": {
+          "type": "string"
+        },
+        "virtual_balance": {
+          "type": "string"
+        },
+        "opening_balance": {
+          "type": "string"
+        },
+        "opening_balance_date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "liability_type": {
+          "type": "null"
+        },
+        "liability_direction": {
+          "type": "null"
+        },
+        "interest": {
+          "type": "null"
+        },
+        "interest_period": {
+          "type": "null"
+        },
+        "current_debt": {
+          "type": "null"
+        },
+        "include_net_worth": {
+          "type": "boolean"
+        },
+        "longitude": {
+          "type": "number"
+        },
+        "latitude": {
+          "type": "number"
+        },
+        "zoom_level": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "account_number",
+        "account_role",
+        "active",
+        "bic",
+        "created_at",
+        "credit_card_type",
+        "currency_code",
+        "currency_decimal_places",
+        "currency_id",
+        "currency_symbol",
+        "current_balance",
+        "current_balance_date",
+        "current_debt",
+        "iban",
+        "include_net_worth",
+        "interest",
+        "interest_period",
+        "latitude",
+        "liability_direction",
+        "liability_type",
+        "longitude",
+        "monthly_payment_date",
+        "name",
+        "notes",
+        "opening_balance",
+        "opening_balance_date",
+        "order",
+        "type",
+        "updated_at",
+        "virtual_balance",
+        "zoom_level"
+      ],
+      "title": "Attributes"
+    },
+    "Links": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "0": {
+          "$ref": "#/definitions/0"
+        },
+        "self": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "http"
+          ]
+        }
+      },
+      "required": [
+        "0",
+        "self"
+      ],
+      "title": "Links"
+    }
+  }
+}

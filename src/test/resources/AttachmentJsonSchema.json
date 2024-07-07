@@ -1,0 +1,151 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$ref": "#/definitions/Welcome7",
+  "definitions": {
+    "0": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "rel": {
+          "type": "string"
+        },
+        "uri": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "rel",
+        "uri"
+      ],
+      "title": "0"
+    },
+    "Welcome7": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/Data"
+        }
+      },
+      "required": [
+        "data"
+      ],
+      "title": "Welcome7"
+    },
+    "Data": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string",
+          "format": "integer"
+        },
+        "attributes": {
+          "$ref": "#/definitions/Attributes"
+        },
+        "links": {
+          "$ref": "#/definitions/Links"
+        }
+      },
+      "required": [
+        "attributes",
+        "id",
+        "links",
+        "type"
+      ],
+      "title": "Data"
+    },
+    "Attributes": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "attachable_id": {
+          "type": "string",
+          "format": "integer"
+        },
+        "attachable_type": {
+          "type": "string"
+        },
+        "md5": {
+          "type": "string"
+        },
+        "filename": {
+          "type": "string"
+        },
+        "download_url": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "http"
+          ]
+        },
+        "upload_url": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "http"
+          ]
+        },
+        "title": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "mime": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "attachable_id",
+        "attachable_type",
+        "created_at",
+        "download_url",
+        "filename",
+        "md5",
+        "mime",
+        "notes",
+        "size",
+        "title",
+        "updated_at",
+        "upload_url"
+      ],
+      "title": "Attributes"
+    },
+    "Links": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "0": {
+          "$ref": "#/definitions/0"
+        },
+        "self": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "http"
+          ]
+        }
+      },
+      "required": [
+        "0",
+        "self"
+      ],
+      "title": "Links"
+    }
+  }
+}

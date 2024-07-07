@@ -1,0 +1,144 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$ref": "#/definitions/Welcome9",
+  "definitions": {
+    "0": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "rel": {
+          "type": "string"
+        },
+        "uri": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "rel",
+        "uri"
+      ],
+      "title": "0"
+    },
+    "Welcome9": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/Data"
+        }
+      },
+      "required": [
+        "data"
+      ],
+      "title": "Welcome9"
+    },
+    "Data": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string",
+          "format": "integer"
+        },
+        "attributes": {
+          "$ref": "#/definitions/Attributes"
+        },
+        "links": {
+          "$ref": "#/definitions/Links"
+        }
+      },
+      "required": [
+        "attributes",
+        "id",
+        "links",
+        "type"
+      ],
+      "title": "Data"
+    },
+    "Attributes": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "auto_budget_type": {
+          "type": "string"
+        },
+        "auto_budget_period": {
+          "type": "string"
+        },
+        "auto_budget_currency_id": {
+          "type": "string",
+          "format": "integer"
+        },
+        "auto_budget_currency_code": {
+          "type": "string"
+        },
+        "auto_budget_amount": {
+          "type": "string"
+        },
+        "spent": {
+          "type": "array",
+          "items": {}
+        }
+      },
+      "required": [
+        "active",
+        "auto_budget_amount",
+        "auto_budget_currency_code",
+        "auto_budget_currency_id",
+        "auto_budget_period",
+        "auto_budget_type",
+        "created_at",
+        "name",
+        "notes",
+        "order",
+        "spent",
+        "updated_at"
+      ],
+      "title": "Attributes"
+    },
+    "Links": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "0": {
+          "$ref": "#/definitions/0"
+        },
+        "self": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "http"
+          ]
+        }
+      },
+      "required": [
+        "0",
+        "self"
+      ],
+      "title": "Links"
+    }
+  }
+}

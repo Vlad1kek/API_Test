@@ -1,0 +1,15 @@
+Pre-requisites:
+Step 1: Create Maven Project
+Step 2: Update pom.xml with required dependencies
+Step 3: Create Folder structure
+Build:
+Step 4: Create Routes.properties -----> contains URLs
+Step 5: Create Account.../Attachment.../Bills.../Budget.../...EndPoints -----> CRUD method implementation
+Step 6: Create Payload
+Step 7: Create Test case
+Step 8: Create data driver test
+        - Excel sheet data
+        = ExcelUtility
+        - DataProviders
+Step 9: Generate Allure reports
+        - Add pom.xml required dependencies

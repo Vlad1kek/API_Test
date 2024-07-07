@@ -1,0 +1,200 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$ref": "#/definitions/Welcome10",
+  "definitions": {
+    "0": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "rel": {
+          "type": "string"
+        },
+        "uri": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "rel",
+        "uri"
+      ],
+      "title": "0"
+    },
+    "Welcome10": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/Data"
+        }
+      },
+      "required": [
+        "data"
+      ],
+      "title": "Welcome10"
+    },
+    "Data": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string",
+          "format": "integer"
+        },
+        "attributes": {
+          "$ref": "#/definitions/Attributes"
+        },
+        "links": {
+          "$ref": "#/definitions/Links"
+        }
+      },
+      "required": [
+        "attributes",
+        "id",
+        "links",
+        "type"
+      ],
+      "title": "Data"
+    },
+    "Attributes": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "currency_id": {
+          "type": "string",
+          "format": "integer"
+        },
+        "currency_code": {
+          "type": "string"
+        },
+        "currency_symbol": {
+          "type": "string"
+        },
+        "currency_decimal_places": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "amount_min": {
+          "type": "string"
+        },
+        "amount_max": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "end_date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "extension_date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "repeat_freq": {
+          "type": "string"
+        },
+        "skip": {
+          "type": "integer"
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "order": {
+          "type": "integer"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "object_group_id": {
+          "type": "string",
+          "format": "integer"
+        },
+        "object_group_order": {
+          "type": "integer"
+        },
+        "object_group_title": {
+          "type": "string"
+        },
+        "next_expected_match": {
+          "type": "null"
+        },
+        "next_expected_match_diff": {
+          "type": "string"
+        },
+        "pay_dates": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "paid_dates": {
+          "type": "array",
+          "items": {}
+        }
+      },
+      "required": [
+        "active",
+        "amount_max",
+        "amount_min",
+        "created_at",
+        "currency_code",
+        "currency_decimal_places",
+        "currency_id",
+        "currency_symbol",
+        "date",
+        "end_date",
+        "extension_date",
+        "name",
+        "next_expected_match",
+        "next_expected_match_diff",
+        "notes",
+        "object_group_id",
+        "object_group_order",
+        "object_group_title",
+        "order",
+        "paid_dates",
+        "pay_dates",
+        "repeat_freq",
+        "skip",
+        "updated_at"
+      ],
+      "title": "Attributes"
+    },
+    "Links": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "0": {
+          "$ref": "#/definitions/0"
+        },
+        "self": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "http"
+          ]
+        }
+      },
+      "required": [
+        "0",
+        "self"
+      ],
+      "title": "Links"
+    }
+  }
+}

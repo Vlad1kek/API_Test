@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+
+    <test verbose="2" preserve-order="true" name="API_Firefly_III_Test">
+        <classes>
+            <class name="api.test.AccountTest">
+                <methods>
+                    <include name="testPostAccount"/>
+                    <include name="testGetSingleAccount"/>
+                    <include name="testUpdateAccount"/>
+                    <include name="testDeleteAccount"/>
+                </methods>
+            </class>
+            <class name="api.test.AttachmentTest">
+                <methods>
+                    <include name="testPostAttachment"/>
+                    <include name="testGetSingleAttachment"/>
+                    <include name="testUpdateAttachment"/>
+                    <include name="testUploadAttachment"/>
+                    <include name="testDownloadAttachment"/>
+                    <include name="testDeleteAttachment"/>
+                </methods>
+            </class>
+            <class name="api.test.BillTest">
+                <methods>
+                    <include name="testPostBill"/>
+                    <include name="testGetSingleBill"/>
+                    <include name="testGetAttachmentToBill"/>
+                    <include name="testGetRulesWithBill"/>
+                    <include name="testGetTransactionsWithBill"/>
+                    <include name="testUpdateBill"/>
+                    <include name="testDeleteBill"/>
+                </methods>
+            </class>
+            <class name="api.test.BudgetTest">
+                <methods>
+                    <include name="testPostBudget"/>
+                    <include name="testGetSingleBudget"/>
+                    <include name="testUpdateBudget"/>
+                    <include name="testPostBudgetLimit"/>
+                    <include name="testGetSingleBudgetLimit"/>
+                    <include name="testUpdateBudgetLimit"/>
+                    <include name="testGetAllTransactionBudgetLimit"/>
+                    <include name="testDeleteLimitBudget"/>
+                    <include name="testDeleteBudget"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
