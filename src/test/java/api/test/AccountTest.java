@@ -3,25 +3,18 @@ package api.test;
 import api.endpoints.AccountEndPoints;
 import api.payload.Account;
 import com.github.javafaker.Faker;
-import io.qameta.allure.restassured.AllureRestAssured;
-import io.restassured.RestAssured;
+import io.qameta.allure.Description;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
 import org.hamcrest.MatcherAssert;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class AccountTest {
-    Faker faker;
-    Account accountPayload;
+public class AccountTest extends BaseTest{
+    private Account accountPayload;
     private String id;
-
-    @BeforeTest
-    public void setFilter(){
-        RestAssured.filters(new AllureRestAssured());
-    }
+    private Faker faker;
 
     @BeforeClass
     public void setupData(){
@@ -55,26 +48,24 @@ public class AccountTest {
         accountPayload.setZoom_level(6);
     }
 
-
-
+    @Description("Create new account")
     @Test(priority = 1)
     public void testPostAccount(){
         Response response = AccountEndPoints.createAccount(accountPayload);
-        response.then().log().all();
 
         id = String.valueOf(response.jsonPath().getString("data.id"));
 
         Assert.assertEquals(response.getStatusCode(), 200);
-        Assert.assertEquals(response.header("Content-Type"), "application/vnd.api+json");
+        Assert.assertEquals(response.header("Content-Type"), VND_API_JSON);
     }
 
+    @Description("Get Single Account")
     @Test(priority = 2)
     public void testGetSingleAccount() {
         Response response = AccountEndPoints.readAccount(id);
-        response.then().log().all();
 
         Assert.assertEquals(response.getStatusCode(), 200);
-        Assert.assertEquals(response.header("Content-Type"), "application/vnd.api+json");
+        Assert.assertEquals(response.header("Content-Type"), VND_API_JSON);
         Assert.assertEquals(response.jsonPath().get("data.attributes.name").toString(),
                 accountPayload.getName());
         Assert.assertEquals(response.jsonPath().get("data.attributes.notes").toString(),
@@ -90,6 +81,7 @@ public class AccountTest {
                 JsonSchemaValidator.matchesJsonSchemaInClasspath("AccountJsonSchema.json"));
     }
 
+    @Description("Update existing account")
     @Test(priority = 3)
     public void testUpdateAccount() {
         //update data using payload
@@ -97,20 +89,21 @@ public class AccountTest {
         accountPayload.setNotes(faker.random().toString());
 
         Response response = AccountEndPoints.updateAccount(id, accountPayload);
-        response.then().log().all();
 
         Assert.assertEquals(response.getStatusCode(), 200);
-        Assert.assertEquals(response.header("Content-Type"), "application/vnd.api+json");
+        Assert.assertEquals(response.header("Content-Type"), VND_API_JSON);
 
         //checking data after update
         Response responseAfterUpdate = AccountEndPoints.readAccount(id);
         Assert.assertEquals(responseAfterUpdate.getStatusCode(), 200);
+        Assert.assertEquals(response.header("Content-Type"), VND_API_JSON);
         Assert.assertEquals(responseAfterUpdate.jsonPath().get("data.attributes.name").toString(),
                 accountPayload.getName());
         Assert.assertEquals(responseAfterUpdate.jsonPath().get("data.attributes.notes").toString(),
                 accountPayload.getNotes());
     }
 
+    @Description("Delete Account")
     @Test(priority = 4)
     public void testDeleteAccount() {
         Response response = AccountEndPoints.deleteAccount(id);

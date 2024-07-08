@@ -1,9 +1,5 @@
 package api.endpoints;
 
-import io.qameta.allure.restassured.AllureRestAssured;
-import io.restassured.RestAssured;
-import org.testng.annotations.BeforeTest;
-
 import java.util.ResourceBundle;
 
 public abstract class BaseEndPoints {
