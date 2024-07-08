@@ -3,22 +3,20 @@ package api.test;
 import api.endpoints.AttachmentEndPoints;
 import api.payload.Attachment;
 import com.github.javafaker.Faker;
-import io.qameta.allure.restassured.AllureRestAssured;
-import io.restassured.RestAssured;
+import io.qameta.allure.Description;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
 import org.hamcrest.MatcherAssert;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.io.File;
 
 
-public class AttachmentTest {
-    Faker faker;
-    Attachment attachmentPayload;
+public class AttachmentTest extends BaseTest{
+    private Faker faker;
+    private Attachment attachmentPayload;
     private String id;
 
     @BeforeClass
@@ -33,24 +31,24 @@ public class AttachmentTest {
         attachmentPayload.setNotes(faker.pokemon().name());
     }
 
+    @Description("Store a new attachment")
     @Test(priority = 1)
     public void testPostAttachment() {
         Response response = AttachmentEndPoints.createAttachment(attachmentPayload);
-        response.then().log().all();
 
         id = String.valueOf(response.jsonPath().getString("data.id"));
 
         Assert.assertEquals(response.getStatusCode(), 200);
-        Assert.assertEquals(response.header("Content-Type"), "application/vnd.api+json");
+        Assert.assertEquals(response.header("Content-Type"), VND_API_JSON);
     }
 
+    @Description("Get a single attachment")
     @Test(priority = 2)
     public void testGetSingleAttachment() {
         Response response = AttachmentEndPoints.readAttachment(id);
-        response.then().log().all();
 
         Assert.assertEquals(response.getStatusCode(), 200);
-        Assert.assertEquals(response.header("Content-Type"), "application/vnd.api+json");
+        Assert.assertEquals(response.header("Content-Type"), VND_API_JSON);
         Assert.assertEquals(response.jsonPath().get("data.attributes.filename").toString(),
                 attachmentPayload.getFilename());
         Assert.assertEquals(response.jsonPath().get("data.attributes.attachable_type").toString(),
@@ -68,6 +66,7 @@ public class AttachmentTest {
                 JsonSchemaValidator.matchesJsonSchemaInClasspath("AttachmentJsonSchema.json"));
     }
 
+    @Description("Update existing attachment")
     @Test(priority = 3)
     public void testUpdateAttachment() {
         attachmentPayload.setFilename(faker.name().username() + ".pdf");
@@ -75,10 +74,9 @@ public class AttachmentTest {
         attachmentPayload.setNotes(faker.pokemon().name());
 
         Response response = AttachmentEndPoints.updateAttachment(id, attachmentPayload);
-        response.then().log().all();
 
         Assert.assertEquals(response.getStatusCode(),200);
-        Assert.assertEquals(response.header("Content-Type"), "application/vnd.api+json");
+        Assert.assertEquals(response.header("Content-Type"), VND_API_JSON);
 
         //checking data after update
         Response responseAfterUpdate = AttachmentEndPoints.readAttachment(id);
@@ -91,6 +89,7 @@ public class AttachmentTest {
                 attachmentPayload.getNotes());
     }
 
+    @Description("Upload an attachment")
     @Test(priority = 4)
     public void testUploadAttachment() {
         File file = new File(".//testData/UploadAttachment.txt");
@@ -99,6 +98,7 @@ public class AttachmentTest {
         Assert.assertEquals(response.getStatusCode(), 204);
     }
 
+    @Description("Download a single attachment")
     @Test(priority = 5)
     public void testDownloadAttachment() {
         Response response = AttachmentEndPoints.downloadAttachment(id);
@@ -106,7 +106,7 @@ public class AttachmentTest {
         Assert.assertEquals(response.getStatusCode(), 200);
         Assert.assertEquals(response.header("Content-Type"), "application/octet-stream");
     }
-
+    @Description("Delete an attachment")
     @Test(priority = 6)
     public void testDeleteAttachment() {
         Response response = AttachmentEndPoints.deleteAttachment(id);

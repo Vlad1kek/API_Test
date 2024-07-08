@@ -1,6 +1,5 @@
 package api.utilities;
 
-import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -14,7 +13,6 @@ import java.io.IOException;
 public class XLUtility {
 
     public FileInputStream fi;
-    public FileOutputStream fo;
     public XSSFWorkbook workbook;
     public XSSFSheet sheet;
     public XSSFRow row;

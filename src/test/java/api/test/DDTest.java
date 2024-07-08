@@ -54,7 +54,6 @@ public class DDTest {
         id[x++] = Integer.getInteger(response.jsonPath().getString("data.id"));
 
         Assert.assertEquals(response.getStatusCode(), 200);
-
     }
 
     @Test(priority = 2)

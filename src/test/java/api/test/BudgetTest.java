@@ -4,20 +4,18 @@ import api.endpoints.BudgetEndPoints;
 import api.payload.Budget;
 import api.payload.Limit;
 import com.github.javafaker.Faker;
-import io.qameta.allure.restassured.AllureRestAssured;
-import io.restassured.RestAssured;
+import io.qameta.allure.Description;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
 import org.hamcrest.MatcherAssert;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class BudgetTest {
-    Faker faker;
-    Budget budgetPayload;
-    Limit limitPayload;
+public class BudgetTest extends BaseTest{
+    private Faker faker;
+    private Budget budgetPayload;
+    private Limit limitPayload;
     private String id;
     private String idLimit;
 
@@ -44,21 +42,23 @@ public class BudgetTest {
         limitPayload.setAmount("123.45");
     }
 
+    @Description("Store a new budget")
     @Test(priority = 1)
     public void testPostBudget() {
         Response response = BudgetEndPoints.createBudget(budgetPayload);
         id = String.valueOf(response.jsonPath().getString("data.id"));
 
         Assert.assertEquals(response.getStatusCode(), 200);
-        Assert.assertEquals(response.header("Content-Type"), "application/vnd.api+json");
+        Assert.assertEquals(response.header("Content-Type"), VND_API_JSON);
     }
 
+    @Description("Get a single budget")
     @Test(priority = 2)
     public void testGetSingleBudget() {
         Response response = BudgetEndPoints.readSingleBudget(id);
 
         Assert.assertEquals(response.getStatusCode(), 200);
-        Assert.assertEquals(response.header("Content-Type"), "application/vnd.api+json");
+        Assert.assertEquals(response.header("Content-Type"), VND_API_JSON);
         Assert.assertEquals(response.jsonPath().get("data.type").toString(), "budgets");
         Assert.assertEquals(response.jsonPath().get("data.attributes.name").toString(),
                 budgetPayload.getName());
@@ -74,6 +74,7 @@ public class BudgetTest {
                 JsonSchemaValidator.matchesJsonSchemaInClasspath("BudgetJsonSchema.json"));
     }
 
+    @Description("Update existing budget")
     @Test(priority = 3)
     public void testUpdateBudget() {
         budgetPayload.setName(faker.rickAndMorty().character());
@@ -83,7 +84,7 @@ public class BudgetTest {
         Response response = BudgetEndPoints.updateBudget(id, budgetPayload);
 
         Assert.assertEquals(response.getStatusCode(), 200);
-        Assert.assertEquals(response.header("Content-Type"), "application/vnd.api+json");
+        Assert.assertEquals(response.header("Content-Type"), VND_API_JSON);
 
         //checking data after update
         Response responseAfterUpdate = BudgetEndPoints.readSingleBudget(id);
@@ -99,21 +100,23 @@ public class BudgetTest {
                 budgetPayload.getNotes());
     }
 
+    @Description("Store a new budget limit")
     @Test(priority = 4)
     public void testPostBudgetLimit() {
         Response response = BudgetEndPoints.createLimitsBudget(id, limitPayload);
         idLimit = String.valueOf(response.jsonPath().getString("data.id"));
 
         Assert.assertEquals(response.getStatusCode(), 200);
-        Assert.assertEquals(response.header("Content-Type"), "application/vnd.api+json");
+        Assert.assertEquals(response.header("Content-Type"), VND_API_JSON);
     }
 
+    @Description("Get single budget limit")
     @Test(priority = 5)
     public void testGetSingleBudgetLimit() {
         Response response = BudgetEndPoints.readSingleLimitBudget(id, idLimit);
 
         Assert.assertEquals(response.getStatusCode(), 200);
-        Assert.assertEquals(response.header("Content-Type"), "application/vnd.api+json");
+        Assert.assertEquals(response.header("Content-Type"), VND_API_JSON);
         Assert.assertEquals(response.jsonPath().get("data.type").toString(), "budget_limits");
         Assert.assertEquals(response.jsonPath().get("data.attributes.amount").toString(),
                 limitPayload.getAmount());
@@ -124,6 +127,7 @@ public class BudgetTest {
                 JsonSchemaValidator.matchesJsonSchemaInClasspath("BudgetLimitJsonSchema.json"));
     }
 
+    @Description("Update existing budget limit")
     @Test(priority = 6)
     public void testUpdateBudgetLimit() {
         limitPayload.setStart("2024-08-23");
@@ -133,14 +137,13 @@ public class BudgetTest {
         Response response = BudgetEndPoints.updateLimitBudget(id, idLimit, limitPayload);
 
         Assert.assertEquals(response.getStatusCode(), 200);
-        Assert.assertEquals(response.header("Content-Type"), "application/vnd.api+json");
+        Assert.assertEquals(response.header("Content-Type"), VND_API_JSON);
 
         //checking data after update
         Response responseAfterUpdate = BudgetEndPoints.readSingleLimitBudget(id, idLimit);
-        responseAfterUpdate.then().log().all();
 
         Assert.assertEquals(response.getStatusCode(), 200);
-        Assert.assertEquals(response.header("Content-Type"), "application/vnd.api+json");
+        Assert.assertEquals(response.header("Content-Type"), VND_API_JSON);
         Assert.assertEquals(response.jsonPath().get("data.attributes.amount").toString(),
                 limitPayload.getAmount());
         Assert.assertEquals(response.jsonPath().get("data.attributes.start").toString(),
@@ -149,14 +152,16 @@ public class BudgetTest {
                 limitPayload.getEnd() + "T23:59:59+02:00");
     }
 
+    @Description("List all transactions by a budget limit ID")
     @Test(priority = 7)
     public void testGetAllTransactionBudgetLimit() {
         Response response = BudgetEndPoints.readTransactionByBudgetLimit(id,idLimit);
 
         Assert.assertEquals(response.getStatusCode(), 200);
-        Assert.assertEquals(response.header("Content-Type"), "application/vnd.api+json");
+        Assert.assertEquals(response.header("Content-Type"), VND_API_JSON);
     }
 
+    @Description("Delete  a budget limit")
     @Test(priority = 8)
     public void testDeleteLimitBudget() {
         Response response = BudgetEndPoints.deleteLimitBudget(id, idLimit);
@@ -164,6 +169,7 @@ public class BudgetTest {
         Assert.assertEquals(response.getStatusCode(), 204);
     }
 
+    @Description("Delete a budget")
     @Test(priority = 9)
     public void testDeleteBudget() {
         Response response = BudgetEndPoints.deleteBudget(id);
