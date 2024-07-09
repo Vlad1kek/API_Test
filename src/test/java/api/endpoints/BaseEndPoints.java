@@ -15,7 +15,10 @@ public abstract class BaseEndPoints {
             "PQixSYYYHBqzMqs8ZrbsGvlcHPbmqG8fBlqMtZX-i67cRqzzPOvJ7MsuIpd1KlUycPxyABwUVC7YU0kS7Ey0_slP_OjzQM5BOXOnX0so" +
             "EF1zb----7KfVYW1gktQbDa14q9_XFj5gFP94FgYb06ACiTjJ_i3RDcA78Mg8FccsBK449B0y-9WTRix0";
 
-    static String getURL(String url) {
-        return ResourceBundle.getBundle("routes").getString(url);
+    static String getURL(String request) {
+        String baseUrl = ResourceBundle.getBundle("routes").getString("api.host");
+        String requestUrl = ResourceBundle.getBundle("routes").getString(request);
+
+        return baseUrl + requestUrl;
     }
 }
