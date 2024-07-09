@@ -9,7 +9,7 @@ Step 6: Create Payload
 Step 7: Create Test case
 Step 8: Create data driver test
         - Excel sheet data
-        = ExcelUtility
+        - ExcelUtility
         - DataProviders
 Step 9: Generate Allure reports
         - Add pom.xml required dependencies
