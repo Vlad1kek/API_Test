@@ -1,5 +1,4 @@
-**Project name:**
-API Firefly III Test Pet-project
+***API Firefly III Test Pet-project***
 
 **Technologies and tools:**
 
