@@ -19,6 +19,6 @@ using CRUD operations for API resources: create, read, update and delete.
 
 [Work plan for autotests](Step)
 
-Video of launching and passing tests on a maven:
+[Video of launching and passing tests on a maven](https://youtu.be/gJ8p0FPgyQc)
 
-Also Jenkins:
+[Also Jenkins](https://youtu.be/mtiF7YeHNCs)
