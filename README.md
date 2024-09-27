@@ -1,4 +1,4 @@
-***API Firefly III Test Pet-project***
+***API Test Pet-project***
 
 **Technologies and tools:**
 
