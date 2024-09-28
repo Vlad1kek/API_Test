@@ -48,7 +48,7 @@ In addition to automated tests, created by me manual tests for key API functiona
 
 ## Project Structure
 
-````
+````bash
 API_Test/
 │
 ├── src/
