@@ -54,29 +54,29 @@ API_Test/
 ├── src/
 │   └── test/
 │       └── java/
-│           ├── api/
-│           │   ├── endpoints/    # Contains endpoint classes for different API sections.
-│           │   │   ├── AccountEndPoints.java         # Manages endpoints related to account operations.
-│           │   │   ├── AttachmentEndPoints.java      # Manages endpoints related to attachments.
-│           │   │   ├── BaseEndPoints.java            # Base class for common API endpoint definitions.
-│           │   │   ├── BillsEndPoints.java           # Handles bill-related API operations.
-│           │   │   └── BudgetEndPoints.java          # Handles budget-related API operations.
-│           │   ├── payload/      # Classes for data modeling (Payloads) for different API requests/responses.
-│           │   │   ├── Account.java                  # Model for account-related data.
-│           │   │   ├── Attachment.java               # Model for attachment-related data.
-│           │   │   ├── Bill.java                     # Model for bill-related data.
-│           │   │   ├── Budget.java                   # Model for budget-related data.
-│           │   │   └── Limit.java                    # Model for budget limits.
-│           ├── test/             # Contains test classes for each endpoint.
-│           │   ├── AccountTest.java                  # Tests related to account operations.
-│           │   ├── AttachmentTest.java               # Tests related to attachments.
-│           │   ├── BaseTest.java                     # Base test class with common setup methods.
-│           │   ├── BillTest.java                     # Tests related to bills.
-│           │   ├── BudgetTest.java                   # Tests related to budget operations.
-│           │   └── DDTest.java                       # Data-driven test for various API validations.
-│           ├── utilities/        # Utility classes for data providers, reusable methods, etc.
-│           │   ├── DataProviders.java                # Class to provide test data for data-driven tests.
-│           │   └── XLUtility.java                    # Utility class for reading Excel files.
+│           └── api/
+│               ├── endpoints/    # Contains endpoint classes for different API sections.
+│               │   ├── AccountEndPoints.java         # Manages endpoints related to account operations.
+│               │   ├── AttachmentEndPoints.java      # Manages endpoints related to attachments.
+│               │   ├── BaseEndPoints.java            # Base class for common API endpoint definitions.
+│               │   ├── BillsEndPoints.java           # Handles bill-related API operations.
+│               │   └── BudgetEndPoints.java          # Handles budget-related API operations.
+│               ├── payload/      # Classes for data modeling (Payloads) for different API requests/responses.
+│               │   ├── Account.java                  # Model for account-related data.
+│               │   ├── Attachment.java               # Model for attachment-related data.
+│               │   ├── Bill.java                     # Model for bill-related data.
+│               │   ├── Budget.java                   # Model for budget-related data.
+│               │   └── Limit.java                    # Model for budget limits.
+│               ├── test/         # Contains test classes for each endpoint.
+│               │   ├── AccountTest.java              # Tests related to account operations.
+│               │   ├── AttachmentTest.java           # Tests related to attachments.
+│               │   ├── BaseTest.java                 # Base test class with common setup methods.
+│               │   ├── BillTest.java                 # Tests related to bills.
+│               │   ├── BudgetTest.java               # Tests related to budget operations.
+│               │   └── DDTest.java                   # Data-driven test for various API validations.
+│               └── utilities/    # Utility classes for data providers, reusable methods, etc.
+│                   ├── DataProviders.java            # Class to provide test data for data-driven tests.
+│                   └── XLUtility.java                # Utility class for reading Excel files.
 ├── resources/
 │   ├── AccountJsonSchema.json                         # JSON schema for account-related responses.
 │   ├── AttachmentJsonSchema.json                      # JSON schema for attachment-related responses.
